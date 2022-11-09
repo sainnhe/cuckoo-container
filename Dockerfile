@@ -24,6 +24,7 @@ RUN apt update \
     libvirt-bin \
     ubuntu-vm-builder \
     bridge-utils \
+    uml-utilities \
     python-libvirt \
     tcpdump \
     volatility \
@@ -50,11 +51,6 @@ RUN pip install -U pip setuptools \
 RUN cuckoo \
     && rm -rf /root/.cuckoo/conf \
     && mkdir /root/.cuckoo/conf
-
-# Guest
-RUN apt install -y \
-    uml-utilities \
-    bridge-utils
 
 CMD ["cuckoo"]
 WORKDIR /root/.cuckoo

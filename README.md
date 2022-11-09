@@ -12,3 +12,11 @@ Where `<registry>` is one of the following:
 
 - [`docker.io`](https://hub.docker.com/repository/docker/sainnhe/cuckoo)
 - [`ghcr.io`](https://github.com/sainnhe/cuckoo-container/pkgs/container/cuckoo)
+
+Then clone this repository and run this image like this:
+
+```bash
+$ sudo docker run -it --rm --name cuckoo -v <path-to-this-repository>/conf:/root/.cuckoo/conf <registry>/sainnhe/cuckoo:latest
+```
+
+Where `<path-to-this-repository>` is the path to this repository.

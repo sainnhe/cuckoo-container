@@ -48,14 +48,13 @@ RUN pip install -U pip setuptools \
     && pip install -U cuckoo
 
 RUN cuckoo \
-    && sed -i \
-    's/version_check = yes/version_check = no/' \
-    /root/.cuckoo/conf/cuckoo.conf
+    && rm -rf /root/.cuckoo/conf \
+    && mkdir /root/.cuckoo/conf
 
 # Guest
 RUN apt install -y \
     uml-utilities \
     bridge-utils
 
-CMD ["bash"]
+CMD ["cuckoo"]
 WORKDIR /root/.cuckoo

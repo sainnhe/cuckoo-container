@@ -16,7 +16,18 @@ Where `<registry>` is one of the following:
 Then clone this repository and run this image like this:
 
 ```bash
-$ sudo docker run -it --rm --name cuckoo -v <path-to-this-repository>/conf:/root/.cuckoo/conf <registry>/sainnhe/cuckoo:latest
+$ sudo docker run \
+    -it \
+    --rm \
+    --name cuckoo \
+    -v <path-to-this-repository>/conf:/root/.cuckoo/conf \
+    -v /dev/vboxdrv:/dev/vboxdrv \
+    -v /dev/vboxnetctl:/dev/vboxnetctl \
+    <registry>/sainnhe/cuckoo:latest
 ```
 
 Where `<path-to-this-repository>` is the path to this repository.
+
+Make sure to have VirtualBox installed on your host machine and `/dev/vbox*` is accessible.
+
+VBoxManage hostonlyif create

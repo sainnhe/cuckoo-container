@@ -26,6 +26,7 @@ RUN apt update \
     bridge-utils \
     uml-utilities \
     python-libvirt \
+    virtualbox \
     tcpdump \
     volatility \
     volatility-tools \
@@ -43,7 +44,8 @@ RUN adduser --disabled-password --gecos "" cuckoo \
     && setcap cap_net_raw,cap_net_admin=eip /usr/sbin/tcpdump \
     && usermod -a -G libvirt cuckoo \
     && usermod -a -G libvirt-qemu cuckoo \
-    && usermod -a -G libvirt-dnsmasq cuckoo
+    && usermod -a -G libvirt-dnsmasq cuckoo \
+    && usermod -a -G vboxusers cuckoo
 
 RUN pip install -U pip setuptools \
     && pip install -U cuckoo
